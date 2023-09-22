@@ -30,29 +30,77 @@ double valueAltura=0;
             SizedBox(
               height: 40,
             ),
-            Text("111 kg"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                  Text(
+                    "${valuePeso.toInt()}",
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                const Text(" Kg",
+                  style: TextStyle(
+                    color: Color.fromARGB(179, 0, 0, 0),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  ),
+                  textAlign: TextAlign.start
+                ),
+              ],
+            ),
             Slider(
               min: 0,
-              max: 250,
+              max: 230,
+              divisions: 230,
+              activeColor: Color.fromARGB(255, 251, 64, 129),
+              inactiveColor: Colors.blueGrey,
+              thumbColor: Color.fromARGB(255, 251, 64, 129),
               value: valuePeso,
-              onChanged: (value){
-                print(value);
-                valuePeso=value;
-                setState(() {});
+              //label: valueAltura.round().toString(),
+              onChanged: (double value){
+                //print(value);
+                //valueAltura=value;
+                setState(() {valuePeso=value;});
               },
             ),
             SizedBox(
               height: 40,
             ),
-            Text("180 cm"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                  Text(
+                    "${valueAltura.toInt()}",
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                const Text(" cm",
+                  style: TextStyle(
+                    color: Color.fromARGB(179, 0, 0, 0),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  ),
+                  textAlign: TextAlign.start
+                ),
+              ],
+            ),
             Slider(
               min: 0,
               max: 250,
+              divisions: 250,
+              activeColor: Color.fromARGB(255, 251, 64, 129),
+              inactiveColor: Colors.blueGrey,
+              thumbColor: Color.fromARGB(255, 251, 64, 129),
               value: valueAltura,
-              onChanged: (value){
-                print(value);
-                valueAltura=value;
-                setState(() {});
+              //label: valueAltura.round().toString(),
+              onChanged: (double value){
+                //print(value);
+                //valueAltura=value;
+                setState(() {valueAltura=value;});
               },
             ),
             ElevatedButton(
