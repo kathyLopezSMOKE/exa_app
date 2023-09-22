@@ -55,6 +55,10 @@ double valueAltura=0;
                 setState(() {});
               },
             ),
+            ElevatedButton(
+              onPressed: (){}, 
+              child: const Text("Calcular"),
+            ),
           ],
         ),
       ),
