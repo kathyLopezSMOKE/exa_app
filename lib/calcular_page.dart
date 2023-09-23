@@ -12,6 +12,22 @@ class calcular extends StatefulWidget {
 class _calcularState extends State<calcular> {
 double valuePeso=0;
 double valueAltura=0;
+double imc=0;
+String result="---";
+void calculateIMC() {
+    setState(() {
+      imc = valuePeso / ((valueAltura / 100) * (valueAltura / 100));
+      if (imc<=18.5) {
+        result="Estas por debajo del indice saludable";
+      }else if(imc>18.5 && imc<=24.9){
+         result="Estas  saludable";
+      }else if(imc>25 && imc<=29.9){
+         result="Estas con sobrepeso";
+      }else if(imc>30.0){
+         result="Estas con obesidad";
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +52,7 @@ double valueAltura=0;
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                   Text(
-                    "${valuePeso.toInt()}",
+                    "${valuePeso.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold
@@ -71,7 +87,7 @@ double valueAltura=0;
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                   Text(
-                    "${valueAltura.toInt()}",
+                    "${valueAltura.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold
@@ -107,7 +123,9 @@ double valueAltura=0;
                 height: 50,
                 color: Color.fromARGB(255, 60, 60, 60),
                 child: ElevatedButton(
-              onPressed: (){ }, 
+              onPressed: (){ 
+                calculateIMC();
+              }, 
               child: const Text("Calcular",style: TextStyle(fontSize: 20),),
               style: ElevatedButton.styleFrom(
                   primary: Color.fromARGB(255, 155, 35, 147),
@@ -115,7 +133,37 @@ double valueAltura=0;
               ),
             ) ,
               ),
-              Text("0"),
+              SizedBox(height: 10,),
+              Container(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Resultado:",
+                  style: TextStyle(
+                    fontSize: 17,
+                  ),
+                )
+              ),
+              SizedBox(height: 10,),
+              Container(
+                child: Text(
+                  "${imc.toStringAsFixed(2)}",
+                  style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 160, 40, 100)
+                  ),
+                ),
+              ),
+              Container(
+                child: Text(
+                  result,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black
+                  ),
+                )
+              )
           ],
         ),
       ),
