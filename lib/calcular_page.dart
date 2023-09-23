@@ -154,6 +154,7 @@ void calculateIMC() {
                   ),
                 ),
               ),
+              SizedBox(height: 10,),
               Container(
                 child: Text(
                   result,
