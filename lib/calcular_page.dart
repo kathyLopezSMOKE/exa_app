@@ -1,4 +1,4 @@
-import 'dart:html';
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 
@@ -13,13 +13,6 @@ class _calcularState extends State<calcular> {
 double valuePeso=0;
 double valueAltura=0;
 
-void calcularIMC(){
-  setState(() {
-    double altura=valueAltura/100;
-    double peso= valuePeso;
-    double imc=peso/(altura*altura);
-  });
-}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,10 +60,7 @@ void calcularIMC(){
               inactiveColor: Colors.blueGrey,
               thumbColor: Color.fromARGB(255, 251, 64, 129),
               value: valuePeso,
-              //label: valueAltura.round().toString(),
               onChanged: (double value){
-                //print(value);
-                //valueAltura=value;
                 setState(() {valuePeso=value;});
               },
             ),
@@ -105,10 +95,7 @@ void calcularIMC(){
               inactiveColor: Colors.blueGrey,
               thumbColor: Color.fromARGB(255, 251, 64, 129),
               value: valueAltura,
-              //label: valueAltura.round().toString(),
               onChanged: (double value){
-                //print(value);
-                //valueAltura=value;
                 setState(() {valueAltura=value;});
               },
             ),
@@ -120,15 +107,15 @@ void calcularIMC(){
                 height: 50,
                 color: Color.fromARGB(255, 60, 60, 60),
                 child: ElevatedButton(
-              onPressed: (){
-                calcularIMC();
-              }, 
-              child: const Text("Calcular"),
+              onPressed: (){ }, 
+              child: const Text("Calcular",style: TextStyle(fontSize: 20),),
               style: ElevatedButton.styleFrom(
                   primary: Color.fromARGB(255, 155, 35, 147),
+                  
               ),
             ) ,
               ),
+              Text("0"),
           ],
         ),
       ),
